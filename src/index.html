@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Reproductor de musica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+</head>
+
+<body>
+  <div class="tabs-container">
+    <ul id="js-tabs" class="tabs">
+      <li class="tabs-item active">Songs</li>
+      <li class="tabs-item">Import</li>
+    </ul>
+
+    <div class="content-tabs">
+      <!-- SONGS -->
+      <div class="content-item active">
+        <select id="">
+          <option value="">Sort By</option>
+          <option value="Artist">Artist</option>
+          <option value="Song Name">Song Name</option>
+          <option value="Year">Year</option>
+          <option value="Started">Started</option>
+          <option value="Album">Album</option>
+        </select>
+        <button>Delete</button>
+        <button>Edit</button>
+        <form action="#" class="search">
+          <fieldset>
+            <input type="search" id="space" value="">
+            <button id="btn" type="submit" value="Buscar"></button>
+          </fieldset>
+        </form>
+        <div class="row">
+          <ul class="column draggable">
+            <li data-id="1" draggable="true">H</li>
+            <li data-id="2" draggable="true">O</li>
+            <li data-id="3">L</li>
+            <li data-id="4">A</li>
+            <li data-id="5">M</li>
+            <li data-id="6">U</li>
+            <li data-id="7">N</li>
+            <li data-id="8">D</li>
+            <li data-id="9">O</li>
+          </ul>
+          <ul class="column draggable">
+            <li data-id="10">R</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- IMPORT -->
+      <div class="content-item">
+        <div class="import">
+          <p>Import Song</p>
+        </div>
+        <div class="hola">
+          <div class="import-content">
+            <form action="" class="import-form">
+              <label for="name"> Name:</label>
+              <input type="text" id="name" class="name" placeholder="Name">
+              <label for="artist">Artist:</label>
+              <input type="text" id="artist" class="artist" placeholder="Artist">
+              <label for="year">Year:</label>
+              <input type="number" id="year" class="year" placeholder="Year">
+              <label for="album">Album:</label>
+              <input type="text" id="album" class="album" placeholder="Album">
+            </form>
+          </div>
+          <div class="import-content">
+            <form action="">
+              <label for="image">Image:</label>
+              <input type="text" id="image" class="image" placeholder="Image">
+              <p>Sources</p>
+              <label for="mp3">Mp3:</label>
+              <input type="text" id="mp3" class="mp3" placeholder="Mp3">
+              <label for="WAV">WAV:</label>
+              <input type="text" id="WAV" class="wav" placeholder="WAV">
+              <label for="OGG">OGG:</label>
+              <input type="text" id="OGG" class="ogg" placeholder="OGG">
+            </form>
+          </div>
+        </div>
+        <div class="adios">
+          <input type="reset" class="btn der" id="reset" value="RESET">
+          <input type="button" id="save" class="btn" value="SAVE">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYER -->
+  <div id="player">
+    <img src="" id="art" />
+    <div class="trackinfo">
+      <p id="name-song"></p>
+      <p id="singer"></p>
+    </div>
+    <div id="track">
+      <div id="progress"></div>
+      <div  id="handler"></div>
+    </div>
+    <div id="hola">
+      <div class="info">
+        <div class="cont">
+          <button id="prev" class="nav">
+            <img src="http://abarcarodriguez.com/lab/prev.png" />
+          </button>
+          <button id="play" class="nav">
+            <img class="pad" src="http://abarcarodriguez.com/lab/play.png" />
+          </button>
+          <button id="next" class="nav">
+            <img src="http://abarcarodriguez.com/lab/next.png" />
+            <button class="nav" id="aleatorio" value="">
+              <img src="random.png" />
+            </button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/tabs.js"></script>
+  <script src="js/drag&drop.js"></script>
+  <script src="js/player.js"></script>
+</body>
+
+</html>

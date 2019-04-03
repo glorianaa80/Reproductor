@@ -1,0 +1,98 @@
+[
+  {
+    "id": "0",
+    "name": "Believer",
+    "artist": "Imagine Dragons",
+    "song": "songs/Believer.mp3",
+    "image": "img/Evolve.jpg",
+    "url": "videos/believe.mp4"
+  },
+  {
+    "id": "1",
+    "name": "Friends",
+    "artist": "Marshmello ft Anne Marie",
+    "song": "songs/Friends.mp3",
+    "image": "img/speakyourmind.jpg",
+    "url": "videos/friends.mp4"
+  },
+  {
+    "id": "2",
+    "name": "Genius",
+    "artist": "L.S.D",
+    "song": "songs/Genius.mp3",
+    "image": "img/lsd.jpg",
+    "url": "videos/genius.mp4"
+  },
+  {
+    "id": "3",
+    "name": "Happier",
+    "artist": "Marshmello ft Bastille",
+    "song": "songs/Happier.mp3",
+    "image": "img/happier.jpg",
+    "url": "videos/happier.mp4"
+  },
+  {
+    "id": "4",
+    "name": "Human",
+    "artist": "Rag'n'Bone Man",
+    "song": "songs/Human.mp3",
+    "image": "img/human.jpg",
+    "url": "videos/human.mp4"
+  },
+  {
+    "id": "5",
+    "name": "Lovely",
+    "artist": "Billie Eilish",
+    "song": "songs/Lovely.mp3",
+    "image": "img/lovely.jpg",
+    "url": "videos/lovely.mp4"
+  },
+  {
+    "id": "6",
+    "name": "Nothing Breaks Like a Heart",
+    "artist": "Miley Cyrus",
+    "song": "songs/Nothing Breaks Like a Heart.mp3",
+    "image": "img/nothingbreakslikeaheart.jpg",
+    "url": "videos/nothingbreakslikeaheart.mp4"
+  },
+  {
+    "id": "7",
+    "name": "Thank u, Next",
+    "artist": "Ariana Grande",
+    "song": "songs/Thank u, next.mp3",
+    "image": "img/thankunext.jpg",
+    "url": "videos/thankunext.mp4"
+  },
+  {
+    "id": "8",
+    "name": "Thunderclouds",
+    "artist": "L.S.D",
+    "song": "songs/Thunderclouds.mp3",
+    "image": "img/lsd-2.jpg",
+    "url": "videos/thunderclouds.mp4"
+  },
+  {
+    "id": "9",
+    "name": "When The Party's Over",
+    "artist": "Billie Eilish",
+    "song": "songs/When the partys over.mp3",
+    "image": "img/whenthepartysover.jpg",
+    "url": "videos/whenthepartysover.mp4"
+  },
+  {
+    "id": "10",
+    "name": "Youngblood",
+    "artist": "5 Seconds of Summer",
+    "song": "songs/Youngblood.mp3",
+    "image": "img/youngblood.jpg",
+    "url": "videos/youngblood.mp4"
+  },
+  {
+    "id": "11",
+    "name": "Youth",
+    "artist": "Shawn Mendes",
+    "song": "songs/Youth.mp3",
+    "image": "img/youth.jpg"
+    ,"url": "videos/youth.mp4"
+  }
+]
