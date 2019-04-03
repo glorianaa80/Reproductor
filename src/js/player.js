@@ -1,9 +1,7 @@
 const player = (function () {
-  const boton = document.getElementsByClassName('clic-info');
   const request = new XMLHttpRequest();
   let response;
   let holding = false;
-  const btnAleatortio = document.getElementById('aleatorio');
   const track = document.getElementById('track');
   const progress = document.getElementById('progress');
   const play = document.getElementById('play');
@@ -12,7 +10,7 @@ const player = (function () {
   const nameSong = document.getElementById('name-song');
   const singer = document.getElementById('singer');
   const art = document.getElementById('art');
-  let currentTrack = 0, currentVideo = 0;
+  let currentTrack = 0;
   let song;
   let audio;
   let duration;
@@ -27,15 +25,6 @@ const player = (function () {
     singer.textContent = song.artist;
     art.src = song.image;
     cargarListeners();
-    for (const i of boton) {
-      i.setAttribute('data', currentVideo);
-      i.children[0].setAttribute('data', currentVideo);
-      i.children[1].setAttribute('data', currentVideo);
-      i.addEventListener('click', (event) => {
-        video.src = response[event.target.getAttribute('data')].url;
-      });
-      currentVideo++;
-    }
   });
 
   function cargarListeners() {
@@ -44,14 +33,6 @@ const player = (function () {
       duration = this.duration;
     }, false);
 
-    window.onmousemove = function (e) {
-      e.preventDefault();
-      if (holding) seekTrack(e);
-    }
-    // window.onmouseup = function (e) {
-    //   holding = false;
-    //   console.log(holding);
-    // }
     track.onmousedown = function (e) {
       holding = true;
       seekTrack(e);
@@ -123,4 +104,4 @@ const player = (function () {
       audio.play();
     }
   }
-}) ();
+})();
