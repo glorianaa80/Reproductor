@@ -27,8 +27,10 @@
           <option value="Started">Started</option>
           <option value="Album">Album</option>
         </select>
-        <button>Delete</button>
-        <button>Edit</button>
+        <button class="btn">Delete</button>
+        <button class="btn">Edit</button>
+
+        <!-- SEARCH -->
         <form action="#" class="search">
           <fieldset>
             <input type="search" id="space" value="">
@@ -39,8 +41,8 @@
           <ul class="column draggable">
             <li data-id="1" draggable="true">H</li>
             <li data-id="2" draggable="true">O</li>
-            <li data-id="3">L</li>
-            <li data-id="4">A</li>
+            <li data-id="3">L <span class="hola">&#9734</span></li>
+            <li data-id="4">A <span class="adios">&#9733</span></li>
             <li data-id="5">M</li>
             <li data-id="6">U</li>
             <li data-id="7">N</li>
@@ -86,8 +88,8 @@
           </div>
         </div>
         <div class="adios">
-          <input type="reset" class="btn der" id="reset" value="RESET">
-          <input type="button" id="save" class="btn" value="SAVE">
+          <input type="reset" class="btn mgnT" id="reset" value="RESET">
+          <input type="button" id="save" class="btn mgnT" value="SAVE">
         </div>
       </div>
     </div>
@@ -95,7 +97,7 @@
 
   <!-- PLAYER -->
   <div id="player">
-    <img src="" id="art" />
+    <img src="" class="img" id="art" />
     <div class="trackinfo">
       <p id="name-song"></p>
       <p id="singer"></p>

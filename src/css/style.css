@@ -3,8 +3,25 @@ body {
   margin: 0;
 }
 
+.btn {
+  color: #000;
+  background-color: #fbb500;
+  border: 1px solid #fbb500;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 45%;
+  padding: 0.5%;
+}
+
+.mgnT {
+  margin-top: 5%;
+}
+
+.btn + .btn {
+  margin-left: 2%;
+}
+
 .tabs-container { 
-  margin: 0 auto;
   position: relative;
   width: 100%;
 }
@@ -22,10 +39,13 @@ body {
   border: 1px solid #cccccc;
   border-bottom: none;
   border-radius:5px 5px 0 0; 
-  margin-right: 1%;
   padding:1%;
   position: relative;
   top: 1px;
+}
+
+.tabs-item + .tabs-item  {
+  margin-left: 0.5%;
 }
 
 .active {
@@ -50,24 +70,22 @@ body {
   left: 0;
 }
 
-h1 {
-  margin: 0;
-}
-
 /* Buscador */
 .search{
   display: inline-block;
   width: 20%;
+  margin-bottom: 1%;
+  margin-left: 20%;
 }
 
 fieldset{
-  border: 1px solid #cccccc;
+  border: 1px solid #fbb500;
   border-radius: 5px;
   padding: 0;
 }
 
 #space, #btn{
-  height: 20px;
+  height: 32px;
 }
 
 #space{
@@ -77,11 +95,11 @@ fieldset{
 }
 
 #btn{ 
-  background-color:#cccccc;
+  background-color:#fbb500;
   border: none;
   float:right;
   margin:3px; 
-  width: 20px;
+  width: 35px;
 }
 
 /* Canciones */
@@ -89,6 +107,14 @@ fieldset{
   display: flex;
   height: 400px;
   width: 100%;
+}
+
+.hola {
+  color: #fbb500;
+}
+
+.adios {
+  color: #fbb500;
 }
 
 .column {
@@ -207,9 +233,15 @@ li {
   position: absolute;
 }
 
+.img {
+  width:100%;
+  background-color: #000;
+}
+
 #container {
   width: 100%;
 }
+
 .info {
   position: absolute;
   width: 100%;
@@ -223,23 +255,23 @@ li {
 }
 
 .trackinfo {
-  margin-left: 10%;
+  padding-left: 10%;
   position: absolute;
-  bottom: 135px;
-  color: #FFF;
+  bottom: 2%;
+  color: #fff;
 }
 
 #player .trackinfo p {
   text-shadow: 0px 0px 5px #333;
 }
-#player .trackinfo #name-song {
+#name-song {
   font-weight: bold;
-  font-size: 50px;
-  padding-left: 22px;
+  font-size: 3rem;
+  padding-left: 0.1%;
 }
-#player .trackinfo #singer {
-  padding-left: 25px;
-  font-size: 25px; 
+#singer {
+  padding-left: 0.1%;
+  font-size: 1.5rem; 
 }
 #track {
   width: 100%;
