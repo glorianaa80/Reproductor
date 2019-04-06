@@ -42,12 +42,12 @@ const player = (function () {
       playing = !playing;
     }
     audio.addEventListener("pause", function () {
-      play.innerHTML = '<img class="pad" src="http://abarcarodriguez.com/lab/play.png"/>';
+      play.innerHTML = '<img class="pad" src="img/play.svg"/>';
       playing = false;
     }, false);
 
     audio.addEventListener("playing", function () {
-      play.innerHTML = '<img src="http://abarcarodriguez.com/lab/pause.png"/>';
+      play.innerHTML = '<img src="img/pause.svg"/>';
       playing = true;
     }, false);
     next.addEventListener("click", nextTrack, false);
@@ -76,6 +76,7 @@ const player = (function () {
     audio.play();
     audio.currentTime = (percent * duration) / 100
   }
+
   function nextTrack() {
     currentTrack++;
     currentTrack = currentTrack % (response.length);
