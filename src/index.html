@@ -27,32 +27,17 @@
           <option value="Started">Started</option>
           <option value="Album">Album</option>
         </select>
-        <button id="delete" class="btn">Delete</button>
-        <button id="edit" class="btn">Edit</button>
+        <button id="delete" hidden="true" class="btn">Delete</button>
+        <button id="edit" hidden="true" class="btn">Edit</button>
 
         <!-- SEARCH -->
-        <form action="#" class="search">
-          <fieldset>
-            <input type="search" id="space" value="">
-            <button id="btn" type="submit" value="Buscar"></button>
-          </fieldset>
-        </form>
+        <input placeholder="Search" type="search" id="space" value="">
+
+
         <div class="row">
-          <ul class="column draggable">
-            <li data-id="1">Believer <span class="adios">&#9733</span></li>
-            <li data-id="2">Friends</li>
-            <li data-id="3">Genius</li>
-            <li data-id="4">Happier</li>
-            <li data-id="5">Human</li>
-            <li data-id="6">Lovely</li>
-            <li data-id="7">Nothing Breaks Like a Heart</li>
-            <li data-id="8">Thank u, Next</li>
-            <li data-id="9">Thunderclouds</li>
-            <li data-id="10">When The Party's Ove</li>
-            <li data-id="11">Youngblood</li>
-            <li data-id="12">Youth</li>
+          <ul id="column" class="column draggable">
           </ul>
-          <ul class="column draggable">
+          <ul id="column-2" class="column draggable">
           </ul>
         </div>
       </div>
@@ -66,32 +51,28 @@
           <div class="import-content">
             <form action="" class="import-form">
               <label for="name"> Name:</label>
-              <input type="text" id="name" class="name" placeholder="Name">
+              <input type="text" id="name" class="mundo" placeholder="Name">
               <label for="artist">Artist:</label>
-              <input type="text" id="artist" class="artist" placeholder="Artist">
+              <input type="text" id="artist" class="mundo" placeholder="Artist">
               <label for="year">Year:</label>
-              <input type="number" id="year" class="year" placeholder="Year">
+              <input type="number" id="year" class="mundo" placeholder="Year">
               <label for="album">Album:</label>
-              <input type="text" id="album" class="album" placeholder="Album">
-            </form>
-          </div>
-          <div class="import-content">
-            <form action="">
+              <input type="text" id="album" class="mundo" placeholder="Album">
               <label for="image">Image:</label>
-              <input type="text" id="image" class="image" placeholder="Image">
+              <input type="text" id="image" class="mundo" placeholder="Image">
               <p>Sources</p>
               <label for="mp3">Mp3:</label>
-              <input type="text" id="mp3" class="mp3" placeholder="Mp3">
+              <input type="text" id="mp3" class="mundo" placeholder="Mp3">
               <label for="WAV">WAV:</label>
-              <input type="text" id="WAV" class="wav" placeholder="WAV">
+              <input type="text" id="WAV" class="mundo" placeholder="WAV">
               <label for="OGG">OGG:</label>
-              <input type="text" id="OGG" class="ogg" placeholder="OGG">
+              <input type="text" id="OGG" class="mundo" placeholder="OGG">
+        <div class="adios">
+          <input type="reset" class="mgnT" value="RESET">
+          <input type="reset" id="save" class="mgnT" value="SAVE">
+        </div>
             </form>
           </div>
-        </div>
-        <div class="adios">
-          <input type="reset" class="btn mgnT" id="reset" value="RESET">
-          <input type="button" id="save" class="btn mgnT" value="SAVE">
         </div>
       </div>
     </div>
@@ -106,7 +87,7 @@
     </div>
     <div id="track">
       <div id="progress"></div>
-      <div  id="handler"></div>
+      <div id="handler"></div>
     </div>
     <div>
       <div class="info">
@@ -125,6 +106,8 @@
     </div>
   </div>
   <script src="js/tabs.js"></script>
+  <script src="js/array.js"></script>
+  <script src="js/import.js"></script>
   <script src="js/dialogo.js"></script>
   <script src="js/drag&drop.js"></script>
   <script src="js/player.js"></script>

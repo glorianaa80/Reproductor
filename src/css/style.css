@@ -8,8 +8,9 @@ body {
   background-color: #fbb500;
   border: 1px solid #fbb500;
   border-radius: 5px;
+  float: right;
   font-size: 16px;
-  margin-left: 45%;
+  margin-right: 2%;
   padding: 0.5%;
 }
 
@@ -18,12 +19,19 @@ body {
 }
 
 .mgnT {
+  color: #000;
+  background-color: #fbb500;
+  border: 1px solid #fbb500;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 31%;
   margin-top: 5%;
+  padding: 0.5%;
 }
 
-.btn + .btn {
-  margin-left: 2%;
-}
+/* .btn + .btn {
+  margin-right: 2%;
+} */
 
 .tabs-container { 
   position: relative;
@@ -75,36 +83,15 @@ body {
 }
 
 /* Buscador */
-.search{
-  display: inline-block;
-  width: 20%;
-  margin-bottom: 1%;
-  margin-left: 20%;
-}
-
-fieldset{
-  border: 1px solid #fbb500;
-  border-radius: 5px;
-  padding: 0;
-}
-
-#space, #btn{
-  height: 32px;
-}
-
 #space{
   color: black;
-  border: none;
-  width: 50%;
+  border: 2px solid #fbb500;
+  height: 32px;
+  margin-left: 3%;
+  margin-bottom: 1%;
+  width: 35%;
 }
 
-#btn{ 
-  background-color:#fbb500;
-  border: none;
-  float:right;
-  margin:3px; 
-  width: 35px;
-}
 
 /* Canciones */
 .row {
@@ -166,69 +153,14 @@ li {
   width: 60%;
 }
 
-.name {
+.mundo {
   border: 1px solid black;
   font-size: 0.8rem;
   margin: 2%;
   padding: 1%;
-  width: 79%;
+  /* width: 79%; */
 }
 
-.artist {
-  border: 1px solid black;
-  font-size: 0.8rem;
-  margin: 2%;
-  padding: 1%;
-  width: 79%;
-}
-
-.year {
-  border: 1px solid black;
-  font-size: 0.8rem;
-  margin: 2%;
-  padding: 1%;
-  width: 79%;
-}
-
-.album {
-  border: 1px solid black;
-  font-size: 0.8rem;
-  margin: 2%;
-  padding: 1%;
-  width: 79%;
-}
-
-.image {
-  border: 1px solid black;
-  font-size: 0.8rem;
-  margin: 2%;
-  padding: 1%;
-  width: 79%;
-}
-
-.mp3 {
-  border: 1px solid black;
-  font-size: 0.8rem;
-  margin: 2%;
-  padding: 1%;
-  width: 79%;
-}
-
-.wav{
-  border: 1px solid black;
-  font-size: 0.8rem;
-  margin: 2%;
-  padding: 1%;
-  width: 79%;
-}
-
-.ogg {
-  border: 1px solid black;
-  font-size: 0.8rem;
-  margin: 2%;
-  padding: 1%;
-  width: 79%;
-}
 
 /* Reprouctor */
 

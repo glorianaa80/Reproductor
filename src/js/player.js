@@ -105,4 +105,22 @@ const player = (function () {
       audio.play();
     }
   }
+
+  function FormatTime (time) {
+		if(time === 0) return '00:00';
+		let secs = Math.round(time);
+		// let hours = Math.floor(secs / (60 * 60));
+
+		let minutesDivisor = secs % (60 * 60);
+		let minutes = Math.floor(minutesDivisor / 60);
+
+		let secondsDivisor = minutesDivisor % 60;
+		let seconds = Math.ceil(secondsDivisor);
+
+		// hours = hours ? (hours < 10 ? `0${hours}` : hours) : '--';
+		minutes = minutes ? (minutes < 10 ? `0${minutes}` : minutes) : '00';
+		seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+		return `${minutes}:${seconds}`;
+}
 })();

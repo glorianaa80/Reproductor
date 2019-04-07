@@ -1,350 +1,259 @@
 // iife
 (function () {
 
-  const KEYS = ['name', 'price', 'date'];
-  const es = [];
-  const en = [];
+  const KEYS = ['name']; 
+	let removeBtn = null;
+	let editBtn = null;
+	let ul = null;
+	let ul2 = null;
+	let selected = null;
 
-  let addBtn = null;
-  let removeBtn = null;
-  let qrBtn = null;
-  let editBtn = null;
-  let selected = null; // html node of selected tr
-
-  /**
-   * Display the add item dialog
-   * @param {Event} event
-   */
-  function addItem(event) {
-    let item = null;
-    let index = null;
-    if (selected) {
-      index = selected.getAttribute('data-index');
+	function removeSong() {
+		let item = null;
+		let index = null;
+		if (selected) {
+			index = selected.getAttribute('data-id');
       item = inventory[index];
-
-      console.log('item', item);
-    }
+		}
 
     let content = document.createElement('div');
-    let form = document.createElement('form');
+    
+		let dialog = createDialog({
+			title: 'Delete Song',
+			content: content,
+			saveText: 'Delete',
+		});
 
-    let fieldBtn = document.createElement('button');
-    fieldBtn.innerText = 'Add';
-    let field = createInput({
-      name: 'custom',
-      placeholder: 'Add Field'
-    });
-    field.appendChild(fieldBtn);
-    fieldBtn.addEventListener('click', addField);
-    content.appendChild(field);
+		// dialog.open = true;
+		dialog.showModal();
 
-    let name = createInput({
-      name: 'name',
-      placeholder: 'Name',
-      value: item ? item.name : null
-    });
-    let price = createInput({
-      name: 'price',
-      type: 'number',
-      placeholder: 'Price',
-      value: item ? item.price : null
-    });
-    let dateValue = `${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate()}`;
-    let date = createInput({
-      name: 'date',
-      type: 'date',
-      placeholder: 'Date',
-      value: item ? item.date : dateValue
-    });
+	}
 
-    form.name = 'itemForm';
-    form.appendChild(name);
-    form.appendChild(price);
-    form.appendChild(date);
-    content.appendChild(form);
+	/**
+	 * Compose a dialog
+	 * @param {Object} config {title, content}
+	 * @returns {HTMLElement} dialog
+	 */
+	function createDialog({
+		title,
+		content,
+		cancelText = 'Cancel',
+		saveText = 'Delete',
+		oncancel,
+		onsave }) {
+		let dialog = document.createElement('dialog');
+		let header = document.createElement('header');
 
-    let dialog = createDialog({
-      title: item ? 'Edit Item' : 'Add Item',
-      content: content,
-      saveText: item ? 'Edit' : 'Save',
-      onsave: save
-    });
-
-    // dialog.open = true;
-    dialog.showModal();
-
-    function save() {
-      let data = {};
-      let input = null;
-
-      for (let i = 0; i < form.length; i++) {
-        input = form[i];
-        if (input.name) data[input.name] = input.value;
-      }
-      inventory.push(data);
-      // dialog.open = false;
-      dialog.close();
-
-      renderTable();
-    }
-
-    /**
-     *
-     * @param event
-     * @param key
-     * @param value
-     * @returns {boolean}
-     */
-    function addField(event, key, value) {
-      let fieldName = key ? key : field.querySelector('input').value;
-      if (!fieldName) return false;
-
-      let input = createInput({
-        name: fieldName,
-        placeholder: fieldName,
-        remove: () => form.removeChild(input),
-      });
-
-      if (value) input.value = value;
-
-      form.appendChild(input);
-    }
-  }
-
-  /**
-   * Compose a dialog
-   * @param {Object} config {title, content}
-   * @returns {HTMLElement} dialog
-   */
-  function createDialog({
-    title,
-    content,
-    cancelText = 'Cancel',
-    saveText = 'Save',
-    oncancel,
-    onsave }) {
-    let dialog = document.createElement('dialog');
-    let header = document.createElement('header');
-
-    // title is string uses a H1 element
-    if (typeof title === 'string') {
-      let h1 = document.createElement('h1');
-      h1.innerText = title;
-      header.appendChild(h1);
-    }
+		// title is string uses a H1 element
+		if (typeof title === 'string') {
+			let h1 = document.createElement('h1');
+			h1.innerText = title;
+			header.appendChild(h1);
+		}
     else header.appendChild(title);
-    // header.appendChild(typeof title === 'string' ? document.createTextNode(title) : title);
+    
+    let p1 = document.createElement('p');
+		p1.innerText = 'Are you sure you want to remove this song?';
 
-    // dialog content
+		let p2 = document.createElement('p');
+    p2.innerText = `This action will delete the song ${inventory[0].name}`;
+
+    let p3 = document.createElement('p');
+    p3.innerText = 'The song will be removed on all the playlist';
+
+		// dialog content
     let section = document.createElement('section');
-    section.appendChild(typeof content === 'string' ? document.createTextNode(content) : content);
+    section.appendChild(p1)
+    section.appendChild(p2)
+    section.appendChild(p3)
+		section.appendChild(typeof content === 'string' ? document.createTextNode(content) : content);
+    
+		// dialog footer
+		let footer = document.createElement('footer');
+		let cancelBtn = document.createElement('button');
+		let saveBtn = document.createElement('button');
 
-    // dialog footer
-    let footer = document.createElement('footer');
-    let cancelBtn = document.createElement('button');
-    let saveBtn = document.createElement('button');
+		// dialog buttons
+		cancelBtn.innerText = cancelText;
+		saveBtn.innerText = saveText;
 
-    // dialog buttons
-    cancelBtn.innerText = cancelText;
-    saveBtn.innerText = saveText;
+		cancelBtn.classList.add('mgnT');
+		saveBtn.classList.add('mgnT');
+		footer.appendChild(cancelBtn);
+		footer.appendChild(saveBtn);
 
-    cancelBtn.classList.add('btn-cancel');
-    saveBtn.classList.add('btn-sucess');
-    footer.appendChild(cancelBtn);
-    footer.appendChild(saveBtn);
+		// custom buttons events
+		if (typeof oncancel === 'function')
+			cancelBtn.addEventListener('click', oncancel);
 
-    // custom buttons events
-    if (typeof oncancel === 'function')
-      cancelBtn.addEventListener('click', oncancel);
+		if (typeof onsave === 'function')
+			saveBtn.addEventListener('click', onsave);
 
-    if (typeof onsave === 'function')
-      saveBtn.addEventListener('click', onsave);
+		// default buttons events
+		cancelBtn.addEventListener('click', close);
+		saveBtn.addEventListener('click', close);
 
-    // default buttons events
-    cancelBtn.addEventListener('click', close);
-    saveBtn.addEventListener('click', close);
+		// adds the dialog header, content and footer
+		dialog.appendChild(header);
+		dialog.appendChild(section);
+		dialog.appendChild(footer);
 
-    // adds the dialog header, content and footer
-    dialog.appendChild(header);
-    dialog.appendChild(section);
-    dialog.appendChild(footer);
+		// add the dialog to the body
+		document.body.appendChild(dialog);
 
-    // add the dialog to the body
-    document.body.appendChild(dialog);
+		return dialog;
 
-    return dialog;
+		function close() {
+			dialog.close();
+			document.body.removeChild(dialog);
+		}
+	}
 
-    function close() {
-      console.log("default close method");
-      dialog.close();
-      document.body.removeChild(dialog);
-    }
-  }
+	/**
+	 * Compose a label and input
+	 * @param {Object} config {name, type, placeholder, remove, value}
+	 * @returns {{label: HTMLElement, input: HTMLElement}}
+	 */
+	function createInput({ name, type = 'text', placeholder, remove, value = null }) {
+		if (!name) throw new Error(`Invalid name on config: ${name}`);
 
-  /**
-   * Compose a label and input
-   * @param {Object} config {name, type, placeholder, remove, value}
-   * @returns {{label: HTMLElement, input: HTMLElement}}
-   */
-  function createInput({ name, type = 'text', placeholder, remove, value = null }) {
-    if (!name) throw new Error(`Invalid name on config: ${name}`);
 
-    let label = document.createElement('label');
-    label.innerText = placeholder || name;
 
-    let input = document.createElement('input');
-    input.name = name;
-    input.type = type;
-    input.placeholder = placeholder || name;
+		// set the value of the input
 
-    // set the value of the input
-    if (value)
-      input.setAttribute('value', value);
+		let div = document.createElement('div');
+		div.appendChild(p1);
+		div.appendChild(p2);
 
-    let div = document.createElement('div');
-    div.appendChild(label);
-    div.appendChild(input);
+		if (remove) {
+			let btn = document.createElement('button');
+			btn.innerText = 'Remove';
 
-    if (remove) {
-      let btn = document.createElement('button');
-      btn.innerText = 'Remove';
+			if (typeof remove === 'function')
+				btn.addEventListener('click', remove);
 
-      if (typeof remove === 'function')
-        btn.addEventListener('click', remove);
+			div.appendChild(btn);
+		}
 
-      div.appendChild(btn);
-    }
+		console.log('div', div);
+		return div;
+	}
 
-    console.log('div', div);
-    return div;
-  }
+	/**
+	 * Render the table body
+	 * @param {Array} data
+	 */
+	function renderTable(data = inventory) {
+		ul.innerHTML = '';
+		data.forEach((item, index) => ul.appendChild(composeRow(item, index)));
 
-  /**
-   * Render the table body
-   * @param {Array} data
-   */
-  function renderTable(data = inventory) {
-    tbody.innerHTML = ''; // clear the the tbody
-    data.forEach((item, index) => tbody.appendChild(composeRow(item, index)));
+		// there is a selected row
+		if (selected) {
+			// finds the row to select and add the selected class
+			let li = li.querySelector(`li[data-index="${selected.getAttribute('data-index')}"]`);
+			if (li) {
+				selected = li;
+				selected.classList.add('selected');
+			}
+		}
+	}
 
-    // there is a selected row
-    if (selected) {
-      // finds the row to select and add the selected class
-      let tr = tbody.querySelector(`tr[data-index="${selected.getAttribute('data-index')}"]`);
-      if (tr) {
-        selected = tr;
-        selected.classList.add('selected');
-      }
-    }
-  }
+	/**
+	 * Compose the table tr and tds for the item
+	 * @param {Object} item
+	 * @param {Number} index
+	 * @returns {HTMLElement}
+	 */
+	function composeRow(item, index) {
+		let li = document.createElement('li');
 
-  /**
-   * Compose the table tr and tds for the item
-   * @param {Object} item
-   * @param {Number} index
-   * @returns {HTMLElement}
-   */
-  function composeRow(item, index) {
-    console.log('item', item);
-    let row = document.createElement('tr');
+    li.setAttribute('data-id', index);
+    li.setAttribute('draggable', true);
+		li.appendChild(composeTd(item.name));
 
-    // row.id = index;
-    row.setAttribute('data-index', index);
-    row.appendChild(composeTd(item.name));
-    row.appendChild(composeTd(item.price));
-    row.appendChild(composeTd(item.date));
+		// gets all the items object keys
+		let keys = Object.keys(item);
 
-    // gets all the items object keys
-    let keys = Object.keys(item);
+		// filter and ingores the name, price and date keys
+		// and compose the summary
+		let summary = keys.filter(key => !!item[key] || !KEYS.includes(key))
+			.map(key => `${key}: ${item[key]}`);
+		return li;
+	}
 
-    // filter and ingores the name, price and date keys
-    // and compose the summary
-    let summary = keys.filter(key => !!item[key] || !KEYS.includes(key))
-      .map(key => `${key}: ${item[key]}`);
+	function composeTd(text) {
+		let span = document.createElement('span');
+		span.innerText = text;
+		return span;
+	}
 
-    row.appendChild(composeTd(summary.join('\n')));
-    return row;
-  }
+	/**
+	 * Search into the inventory
+	 */
+	function search(event) {
+		if (!inventory.length) return;
 
-  function composeTd(text) {
-    let td = document.createElement('td');
-    td.innerText = text;
-    return td;
-  }
+		let text = event.target.value;
 
-  /**
-   * Search into the inventory
-   */
-  function search(event) {
-    if (!inventory.length) return;
+		text = new RegExp(text, 'i');
 
-    let text = event.target.value;
+		let data = inventory.filter(item => text.test(item.name));
 
-    text = new RegExp(text, 'i');
+		// refresh the table body
+		renderTable(data);
+	}
 
-    let data = inventory.filter(item => text.test(item.name));
+	/**
+	 * Selects the table body row on click
+	 * @param {Event} event
+	 */
+	function select(event) {
+		let li = event.target.parentNode;
 
-    // refresh the table body
-    renderTable(data);
+		// reset previous selected row
+		if (selected) selected.classList.remove('selected');
 
-    console.log('search', data);
-  }
+		// previous selected row is the same as the new selected row
+		if (selected && selected.getAttribute('data-id') === li.getAttribute('data-id')) {
+			selected = null; // unselect the row
+		}
+		// new row selected
+		else {
+			selected = li;
+			selected.classList.add('selected');
+		}
 
-  /**
-   * Selects the table body row on click
-   * @param {Event} event
-   */
-  function selectRow(event) {
-    let tr = event.target.parentNode;
+		toggleButtons(!selected);
+	}
 
-    // reset previous selected row
-    if (selected) selected.classList.remove('selected');
+	/**
+	 * Toogle the hidden values for the action buttons
+	 */
+	function toggleButtons(hidden) {
+		editBtn.hidden = hidden;
+		removeBtn.hidden = hidden;
+	}
 
-    // previous selected row is the same as the new selected row
-    if (selected && selected.getAttribute('data-index') === tr.getAttribute('data-index')) {
-      selected = null; // unselect the row
-    }
-    // new row selected
-    else {
-      selected = tr;
-      selected.classList.add('selected');
-    }
+	/**
+	 * Init the selectors
+	 */
+	function init() {
+		editBtn = document.getElementById('edit');
+		removeBtn = document.getElementById('delete');
+		ul = document.getElementById('column');
+		ul2 = document.getElementById('column-2');
 
-    toggleButtons(!selected);
+		let searchInput = document.getElementById('space');
 
-    console.log('selected', selected);
-  }
+		// eventss
+		ul.addEventListener('click', select);
+		ul2.addEventListener('click', select);
+		removeBtn.addEventListener('click', removeSong);
+		searchInput && searchInput.addEventListener('keyup', search);
 
-  /**
-   * Toogle the hidden values for the action buttons
-   */
-  function toggleButtons(hidden) {
-    editBtn.hidden = hidden;
-    removeBtn.hidden = hidden;
-    qrBtn.hidden = hidden;
-  }
+		renderTable();
+	}
 
-  /**
-   * Init the selectors
-   */
-  function init() {
-    editBtn = document.getElementById('editBtn');
-    removeBtn = document.getElementById('removeBtn');
-    qrBtn = document.getElementById('qrBtn');
-    addBtn = document.getElementById('addBtn');
-    tbody = document.getElementById('tableBody');
-    nav = document.querySelector('nav');
 
-    let searchInput = nav.querySelector('input');
-
-    // events
-    tbody.addEventListener('click', selectRow);
-    editBtn.addEventListener('click', addItem);
-    addBtn.addEventListener('click', addItem);
-    searchInput && searchInput.addEventListener('keyup', search);
-
-    renderTable();
-  }
-
-  init();
+	init();
 })();
