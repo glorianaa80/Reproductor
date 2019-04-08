@@ -11,7 +11,7 @@ let ul = document.getElementById('column');
 
 
 function save() {
-  let fila = document.createElement('li');  
+  let fila = '';  
   const nuevaFila = {
     id:'12',
     name: name1.value,
@@ -25,9 +25,8 @@ function save() {
   };
   inventory.push(nuevaFila);
   console.log(inventory)
-  fila.setAttribute('draggable', true)
   for (let i = 0; i < inventory.length; i += 1) {
-    fila.innerText = inventory[i].name;
+    fila =+ `<li> ${inventory[i].name} </li>`;
   };
 
 
