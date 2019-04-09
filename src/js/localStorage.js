@@ -1,5 +1,4 @@
 const TodoData = (function () {
-
   // private
   const PREFIX = 'TODO_DATA';
   // let DATA = [];
@@ -79,3 +78,8 @@ const TodoData = (function () {
     }
   }
 })();
+
+function gg(){
+  const hh = new TodoData().save();
+  console.log(hh);
+}
