@@ -1,15 +1,16 @@
 const TodoData = (function () {
+
   // private
   const PREFIX = 'TODO_DATA';
-  let DATA = [];
+  // let DATA = [];
 
   let instance = null;
 
   return class TodoData {
-    static Subscriptions = Object.freeze({
-      'TODO_ADDED': Symbol('TODO_ADDED'),
-      'TODO_DONE': Symbol('TODO_DONE'),
-    });
+    // static Subscriptions = Object.freeze({
+    //   'TODO_ADDED': Symbol('TODO_ADDED'),
+    //   'TODO_DONE': Symbol('TODO_DONE'),
+    // });
 
     constructor() {
       if (!instance) {
@@ -18,42 +19,25 @@ const TodoData = (function () {
       }
       return instance;
     }
-
-    /**
-     * Returns the todo list
-     * @returns {Array}
-     */
-    get todo() {
-      return DATA.filter(item => !item.done);
-    }
-
-    /**
-     * Returns the done list
-     * @returns {Array}
-     */
-    get done() {
-      return DATA.filter(item => item.done);
-    }
-
     /**
      * Finds a todo list
      * @param {number} id
      * @returns {null|array}
      */
-    get(id) {
-      return DATA.find(item => item.id == id);
+    get(g) {
+      return DATA.find(item => item.g == g);
     }
 
     /**
      * Add a new todo
      * @param {TodoItem} todo
      */
-    add(todo) {
-      if (!todo || !(todo instanceof TodoItem))
-        throw new Error(`Invalid todo: ${todo}`);
+    add(h) {
+      if (!h || !(h instanceof TodoItem))
+        throw new Error(`Invalid todo: ${h}`);
 
       // add the todo
-      DATA.push(todo);
+      DATA.push(h);
 
       // save the data into the localstorage
       this.save();
@@ -81,7 +65,7 @@ const TodoData = (function () {
     save() {
       console.log('save')
       try {
-        let data = JSON.stringify(DATA.map(i => i.toObject()));
+        let data = JSON.stringify(inventoy.map(i => i.toObject()));
         localStorage.setItem(PREFIX, data);
       } catch (error) {
         console.error(`Can not save the todo data into the localstorage.`);
@@ -94,7 +78,7 @@ const TodoData = (function () {
         if (data) {
           data = JSON.parse(data);
           if (Array.isArray(data)) {
-            DATA = data.map(item => new TodoItem(item.text, item.done));
+            inventoy = data.map(item => new TodoItem(item.text, item.done));
           }
         }
       } catch (err) {
@@ -103,3 +87,8 @@ const TodoData = (function () {
     }
   }
 })();
+
+function gh(){
+  let a = new TodoData().save();
+  console.log(a);
+}

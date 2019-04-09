@@ -1,7 +1,7 @@
-(function(){
+(function () {
   const tabs = Array.prototype.slice.apply(document.querySelectorAll('.tabs-item'));
   const contents = Array.prototype.slice.apply(document.querySelectorAll('.content-item'));
-  
+
   function changeTabs(e) {
     if (e.target.classList.contains('tabs-item')) {
       const i = tabs.indexOf(e.target);

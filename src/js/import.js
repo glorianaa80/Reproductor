@@ -10,7 +10,7 @@ const ogg1 = document.getElementById('OGG');
 let ul = document.getElementById('column');
 
 
-function save() {
+function hola() {
   let fila = '';  
   const nuevaFila = {
     id:'12',
@@ -33,4 +33,5 @@ function save() {
   ul.innerHTML = fila;
 }
 
-btnSave.addEventListener('click', save);
+
+btnSave.addEventListener('click', gh);

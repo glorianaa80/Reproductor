@@ -24,6 +24,7 @@ function drop(event) {
   draggableEvent(clone);
   target.appendChild(clone);
   item.parentNode.removeChild(item);
+  player(clone.getAttribute('data-src'));
 }
 
 function dragover(event) {
