@@ -32,6 +32,3 @@ function hola() {
 
   ul.innerHTML = fila;
 }
-
-
-btnSave.addEventListener('click', gh);

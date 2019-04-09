@@ -63,32 +63,19 @@ const TodoData = (function () {
     }
 
     save() {
-      console.log('save')
-      try {
-        let data = JSON.stringify(inventoy.map(i => i.toObject()));
-        localStorage.setItem(PREFIX, data);
-      } catch (error) {
-        console.error(`Can not save the todo data into the localstorage.`);
-      }
+      let data = JSON.stringify(inventory.map(i => i));
+      console.log(data);
+      localStorage.setItem(PREFIX, data);
     }
 
     restore() {
-      try {
         let data = localStorage.getItem(PREFIX);
         if (data) {
           data = JSON.parse(data);
           if (Array.isArray(data)) {
-            inventoy = data.map(item => new TodoItem(item.text, item.done));
+            inventory = data.map(i => i);
           }
         }
-      } catch (err) {
-        console.error(`Can not get the todo data into the localstorage.`);
-      }
     }
   }
 })();
-
-function gh(){
-  let a = new TodoData().save();
-  console.log(a);
-}
