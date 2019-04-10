@@ -1,6 +1,5 @@
 const form = document.querySelector('#form');
 const ul = document.getElementById('column');
-// let inventory = [];
 
 function createItem (name, artist, album, year, mp3, image, wav, ogg) {
   let item = {
@@ -8,11 +7,11 @@ function createItem (name, artist, album, year, mp3, image, wav, ogg) {
     artist: artist,
     album: album,
     year: year,
-    song: mp3,
+    songs:`songs/${mp3}`,
     image: image,
-    wav: wav,
-    ogg: ogg,
-  };
+    wav:`songs/${wav}`,
+    ogg:`songs/${ogg}`,
+  }
 
   inventory.push(item);
   return item;
@@ -20,6 +19,7 @@ function createItem (name, artist, album, year, mp3, image, wav, ogg) {
 
 function save() {
   localStorage.setItem('Data-Song', JSON.stringify(inventory));
+  printDOM();
 }
 
 function printDOM() {
@@ -30,8 +30,7 @@ function printDOM() {
     inventory = [];
   } else {
     inventory.forEach(element => {
-      let li = document.createElement('li');
-      li.setAttribute('draggable', true)
+     ul.innerHTML += `<li data-id="" draggable="true" data-src=""><span>${element.name}</span></li>`
       
     })
   }
@@ -52,5 +51,6 @@ form.addEventListener('submit', (e) => {
   save();
   form.reset();
 });
+console.log(inventory);
 
 document.addEventListener('DOMContentLoaded', printDOM);

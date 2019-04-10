@@ -29,10 +29,6 @@ body {
   padding: 0.5%;
 }
 
-/* .btn + .btn {
-  margin-right: 2%;
-} */
-
 .tabs-container { 
   position: relative;
   width: 100%;
@@ -164,15 +160,15 @@ li {
 
 /* Reprouctor */
 
-
 #player {
   width: 100%;
   position: absolute;
 }
 
 .img {
-  width:100%;
   background-color: #000;
+  height: 350px;
+  width:100%;
 }
 
 #container {
@@ -225,6 +221,7 @@ li {
   background: #00CC99;
   cursor: pointer;
 }
+
 #handler {
   display: none;
 }

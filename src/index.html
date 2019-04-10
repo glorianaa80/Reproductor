@@ -36,6 +36,7 @@
 
         <div class="row">
           <ul id="column" class="column draggable">
+            <li data-id="" draggable="true" data-src=""><span></span></li>
           </ul>
           <ul id="column-2" class="column draggable">
           </ul>
@@ -80,10 +81,11 @@
 
   <!-- PLAYER -->
   <div id="player">
-    <img src="" class="img" id="art" />
+    <img src="img/defaul.jpg" class="img" id="art" />
     <div class="trackinfo">
       <p id="name-song"></p>
       <p id="singer"></p>
+      <p id="albumSong"></p>
     </div>
     <div id="track">
       <div id="progress"></div>
@@ -106,13 +108,15 @@
     </div>
   </div>
   <script src="js/array.js"></script>
+  <!-- <script src="js/singleton.js"></script> -->
   <script src="js/local.js"></script>
-  <script src="js/import.js"></script>
+  <script src="js/dialogo.js"></script>
+  <script src="js/drag&drop.js"></script>
+  <!-- <script src="js/import.js"></script> -->
   <script src="js/player.js"></script>
   <script src="js/mediator.js"></script>
   <script src="js/tabs.js"></script>
-  <script src="js/dialogo.js"></script>
-  <script src="js/drag&drop.js"></script>
+ 
 </body>
 
 </html>

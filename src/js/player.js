@@ -6,6 +6,7 @@ const next = document.getElementById('next');
 const prev = document.getElementById('prev');
 const nameSong = document.getElementById('name-song');
 const singer = document.getElementById('singer');
+const albumSong = document.getElementById('albumSong');
 const art = document.getElementById('art');
 let currentTrack = 0;
 let song;
@@ -18,9 +19,10 @@ document.addEventListener('load', play);
 function player(index) {
   song = inventory[index];
   audio = new Audio();
-  audio.src = song.song;
+  audio.src = song.songs;
   nameSong.textContent = song.name;
   singer.textContent = song.artist;
+  albumSong.textContent = song.album;
   art.src = song.image;
   cargarListeners();
 }
@@ -52,6 +54,12 @@ function cargarListeners() {
   prev.addEventListener("click", prevTrack, false);
 }
 
+function seekSong(audio) {
+  audio.currentTime = progress.value;
+  audio.currentTime.textContent = FormatTime(song.currentTime);
+  console.log(FormatTime(audio.currentTime));
+}
+
 
 function updateTrack() {
   const curtime = audio.currentTime;
@@ -70,13 +78,14 @@ function seekTrack(e) {
   handler.style.left = percent + '%';
   audio.play();
   audio.currentTime = (percent * duration) / 100
+
 }
 
 function nextTrack() {
   currentTrack++;
   currentTrack = currentTrack % (inventory.length);
   song = inventory[currentTrack];
-  audio.src = song.song;
+  audio.src = song.songs;
   audio.onloadeddata = function () {
     updateInfo();
   }
@@ -86,7 +95,7 @@ function prevTrack() {
   currentTrack--;
   currentTrack = (currentTrack == -1 ? (inventory.length - 1) : currentTrack);
   song = inventory[currentTrack];
-  audio.src = song.song;
+  audio.src = song.songs;
   audio.onloadeddata = function () {
     updateInfo();
   }
@@ -95,6 +104,7 @@ function prevTrack() {
 function updateInfo() {
   nameSong.textContent = song.name;
   singer.textContent = song.artist;
+  albumSong.textContent = song.album;
   art.src = song.image;
   art.onload = function () {
     audio.play();
@@ -115,4 +125,3 @@ function FormatTime(time) {
 
   return `${minutes}:${seconds}`;
 }
-
